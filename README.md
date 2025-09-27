@@ -1,4 +1,5 @@
 Learn Lingo - Online Language Tutors Platform 🌍
+
 Project Overview
 Learn Lingo is a full-featured web application for a company that offers online language tutoring services. The application allows users to browse, filter, and save tutors to a favorites list, as well as book trial lessons after authentication.
 
