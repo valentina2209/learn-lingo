@@ -1,28 +1,24 @@
-import { useState } from 'react'
+import { useTranslation } from "react-i18next";
 
+function Header() {
+  const { t, i18n } = useTranslation();
 
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem("lang", lang);
+  };
 
   return (
-    <>
-
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <header>
+      <h1>{t("welcome")}</h1>
+      <nav>
+        <a href="/teachers">{t("teachers")}</a>
+        <a href="/favorites">{t("favorites")}</a>
+      </nav>
+      <button onClick={() => changeLanguage("ua")}>UA</button>
+      <button onClick={() => changeLanguage("en")}>EN</button>
+    </header>
+  );
 }
 
-export default App
+export default Header;
