@@ -1,0 +1,44 @@
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 60px 24px;
+}
+
+.hero__text {
+  max-width: 500px;
+}
+
+.hero__text h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.hero__text span {
+  font-style: italic;
+  color: #f4b400;
+}
+
+.hero__text p {
+  margin-bottom: 24px;
+  color: #444;
+  font-size: 18px;
+}
+
+.hero__image img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1199px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero__image img {
+    max-width: 60%;
+  }
+}

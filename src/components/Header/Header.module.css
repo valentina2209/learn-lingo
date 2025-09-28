@@ -1,0 +1,125 @@
+/* ============ Mobile ============ */
+
+.container {
+  padding: 0 16px;
+}
+nav,
+.btn_link,
+.btn_primary {
+  display: none;
+}
+.wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 28px;
+}
+.burger {
+  background: white;
+  border: none;
+}
+.icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    padding: 0 36px;
+  }
+  .wrapper {
+    display: inline-flex;
+    gap: 68px;
+  }
+  nav {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .link,
+  .activeLink {
+    color: #121417;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+    text-decoration: none;
+  }
+
+  .link:hover {
+    color: black;
+  }
+
+  .activeLink {
+    color: #ffdc86;
+  }
+
+  .header__actions {
+    display: flex;
+  }
+  .btn_link {
+    display: flex;
+    border: none;
+    background: white;
+    align-items: center;
+    color: #121417;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-right: 16px;
+    cursor: pointer;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+
+  .btn_primary {
+    display: flex;
+    padding: 14px 39px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 12px;
+    background-color: #121417;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .btn_primary:hover,
+  .btn_primary:focus {
+    background-color: #ffdc86;
+    transform: translateY(-2px);
+  }
+  .btn_primary:active {
+    background-color: #222;
+    color: #fff;
+    transform: translateY(0);
+  }
+  .text {
+    color: #fff;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .burger {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    padding: 0 128px;
+  }
+  .wrapper {
+    gap: 268px;
+  }
+}

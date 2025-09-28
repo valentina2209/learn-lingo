@@ -1,0 +1,21 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.icon {
+  width: 28px;
+  height: 28px;
+  fill: var(--white);
+}
+.title {
+  color: #121417;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+}

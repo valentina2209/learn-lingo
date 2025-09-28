@@ -44,26 +44,26 @@ body {
 
 @media only screen and (max-width: 392.5px) {
   .container {
-    padding: 8px;
+    padding: 28px;
   }
 }
 @media only screen and (min-width: 393px) {
   .container {
-    padding: 16px;
+    padding: 36px;
     max-width: 393px;
   }
 }
 
 @media only screen and (min-width: 768px) {
   .container {
-    padding: 0 32px;
+    padding: 0 52px;
     max-width: 768px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .container {
-    padding: 0 108px;
+    padding: 0 128px;
     max-width: 1440px;
   }
 }

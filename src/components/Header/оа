@@ -1,0 +1,14 @@
+ <nav className={css.nav}>
+                <NavLink
+                    to="/"
+                    className={({ isActive }) => (isActive ? css.activeLink : css.link)}
+                >
+                    Home
+                </NavLink>
+                <NavLink
+                    to="/catalog"
+                    className={({ isActive }) => (isActive ? css.activeLink : css.link)}
+                >
+                    Catalog
+                </NavLink>
+            </nav>
