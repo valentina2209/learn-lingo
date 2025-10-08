@@ -1,11 +1,13 @@
 /* ============ Mobile ============ */
 
 .container {
+  margin-top: 20px;
   padding: 0 16px;
+  margin-bottom: 20px;
 }
 nav,
 .btn_link,
-.btn_primary {
+.btn {
   display: none;
 }
 .wrapper {
@@ -79,7 +81,7 @@ nav,
     margin-right: 8px;
   }
 
-  .btn_primary {
+  .btn {
     display: flex;
     padding: 14px 39px;
     justify-content: center;
@@ -91,12 +93,12 @@ nav,
     cursor: pointer;
     transition: all 0.3s ease;
   }
-  .btn_primary:hover,
-  .btn_primary:focus {
+  .btn:hover,
+  .btn:focus {
     background-color: #ffdc86;
     transform: translateY(-2px);
   }
-  .btn_primary:active {
+  .btn:active {
     background-color: #222;
     color: #fff;
     transform: translateY(0);
@@ -121,5 +123,7 @@ nav,
   }
   .wrapper {
     gap: 268px;
+    display: flex;
+    justify-content: center;
   }
 }

@@ -32,7 +32,7 @@ export default function Header() {
                         </svg>
                         Log in
                     </button>
-                    <button className={css.btn_primary}>
+                    <button className={css.btn}>
                         <span className={css.text}>Registration</span>
                     </button>
 
