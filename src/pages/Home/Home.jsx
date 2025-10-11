@@ -1,9 +1,16 @@
 import BottomSection from "../../components/BottomSection/BottomSection";
 import Header from "../../components/Header/Header";
+import { useNavigate } from "react-router-dom";
 import css from "./Home.module.css"
 
 
 export default function Hero() {
+    const navigate = useNavigate();
+
+    const handleNavigateToTeachers = () => {
+        navigate('/teachers');
+    };
+
     return (
         <>
             <Header />
@@ -16,7 +23,9 @@ export default function Hero() {
                         <p className={css.hero__text}>
                             Embark on an Exciting Language Journey with Expert Language Tutors: Elevate your language proficiency to new heights by connecting with highly qualified and experienced tutors.
                         </p>
-                        <button className={css.hero__button}>Get started</button>
+                        <button className={css.hero__button} onClick={handleNavigateToTeachers}>
+                            Get started
+                        </button>
                     </div>
                     <div className={css.hero__image}>
                         <img src="/Banner.jpg" alt="Hero illustration" />

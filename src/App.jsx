@@ -1,16 +1,14 @@
-import Header from "./components/Header/Header";
-import Home from "./pages/Home/Home"
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home/Home';
+import TeachersList from './pages/Teachers/Teachers';
 
 
-
-
-export default function App() {
+function App() {
   return (
-    <>
-
-      <Home />
-
-    </>
-
-  );
-};
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/teachers" element={<TeachersList />} />
+    </Routes>
+  )
+}
+export default App;

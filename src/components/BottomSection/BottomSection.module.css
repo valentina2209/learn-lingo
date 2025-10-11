@@ -1,6 +1,8 @@
 .container {
-  padding: 0 128px;
+  padding: 0 64px;
   margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
 }
 .bottom {
   display: flex;
