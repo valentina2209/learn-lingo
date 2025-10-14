@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 48px 128px 96px;
+  background: #f8f8f8;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.text {
+  color: #121417;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 137.5% */
+  letter-spacing: -0.32px;
+}

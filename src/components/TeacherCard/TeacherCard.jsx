@@ -1,12 +1,8 @@
 import { useState } from 'react';
 import css from './TeacherCard.module.css';
 
-export default function TeacherCard({ teacher }) {
-    const [isFavorite, setIsFavorite] = useState(false);
+export default function TeacherCard({ teacher, onToggleFavorite, isFavorite }) {
     const [expanded, setExpended] = useState(false);
-
-    const toggleFavorite = () => setIsFavorite(prev => !prev);
-    const toggleExpand = () => setExpended(prev => !prev);
 
     const {
         name,
@@ -23,10 +19,18 @@ export default function TeacherCard({ teacher }) {
         conditions,
     } = teacher;
 
+    const handleToggle = () => {
+        onToggleFavorite(teacher);
+    }
+
+    const toggleExpand = () => setExpended(prev => !prev);
+
+
+
+
     const getInitials = (fullName) => {
-        // Вхідний аргумент "fullName" буде значенням review.reviewer_name
+
         if (!fullName) return '?';
-        // Наприклад, для "Frank" поверне "F"
         return fullName.charAt(0).toUpperCase();
     };
 
@@ -52,8 +56,13 @@ export default function TeacherCard({ teacher }) {
                             </div>
                             <p className={`${css.book_text} ${css.stat_item}`}>Price: ${price_per_hour}/hour</p>
                         </div>
-                        <button onClick={toggleFavorite} className={`${css.heart} ${isFavorite ? css.active : ''} `}>
-                            <svg className={css.icon_heart}><use href="/icons.svg#icon-heart" /></svg>
+                        <button
+                            onClick={handleToggle}
+                            className={`${css.heart} ${isFavorite ? css.active : ''} `}
+                        >
+                            <svg className={css.icon_heart}>
+                                <use href="/icons.svg#icon-heart" />
+                            </svg>
                         </button>
                     </div>
 

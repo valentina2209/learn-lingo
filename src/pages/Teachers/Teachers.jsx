@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ref, get } from 'firebase/database';
 import { database } from '../../services/firebase';
 import TeacherCard from '../../components/TeacherCard/TeacherCard';
@@ -9,6 +9,7 @@ export default function TeacherList() {
     const [teachers, setTeachers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [visibleCount, setVisibleCount] = useState(4);
+    const [favorites, setFavorites] = useState([]);
 
     useEffect(() => {
         const fetchTeachers = async () => {
@@ -29,8 +30,37 @@ export default function TeacherList() {
             }
         };
 
+        const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        setFavorites(savedFavorites);
+
         fetchTeachers();
     }, []);
+
+    const handleToggleFavorite = useCallback((teacherData) => {
+        const saved = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        const isCurrentlyFavorite = saved.some(teacher => teacher.name === teacherData.name && teacher.surname === teacherData.surname);
+
+        let updatedList;
+
+        if (isCurrentlyFavorite) {
+            updatedList = saved.filter(teacher => !(teacher.name === teacherData.name && teacher.surname === teacherData.surname));
+        } else {
+            const newTeacher = {
+                ...teacherData,
+                uniqueId: teacherData.uniqueId || crypto.randomUUID()
+            }
+            updatedList = [...saved, newTeacher];
+        }
+
+        localStorage.setItem('favorites', JSON.stringify(updatedList));
+
+        setFavorites(updatedList);
+    }, []);
+
+    const isTeacherFavorite = (teacher) => {
+        return favorites.some(fav => fav.name === teacher.name && fav.surname === teacher.surname)
+    }
 
     if (loading) return <p>Loading...</p>;
 
@@ -46,7 +76,12 @@ export default function TeacherList() {
             <div className={css.container}>
                 <div className={css.list}>
                     {visibleTeachers.map((teacher, index) => (
-                        <TeacherCard key={index} teacher={teacher} />
+                        <TeacherCard
+                            key={teacher.name + teacher.surname + index}
+                            teacher={teacher}
+                            onToggleFavorite={handleToggleFavorite}
+                            isFavorite={isTeacherFavorite(teacher)}
+                        />
                     ))}
 
                 </div>

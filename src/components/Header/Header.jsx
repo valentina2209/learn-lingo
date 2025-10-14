@@ -23,7 +23,12 @@ export default function Header() {
                     >
                         Teachers
                     </NavLink>
-
+                    <NavLink
+                        to="/favorites"
+                        className={({ isActive }) => (isActive ? css.activeLink : css.link)}
+                    >
+                        Favorites
+                    </NavLink>
                 </nav>
                 <div className={css.header__actions}>
                     <button className={css.btn_link}>
