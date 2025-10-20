@@ -191,7 +191,7 @@
   text-underline-position: from-font;
 }
 
-.levelsContainer {
+.levels {
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -208,7 +208,7 @@
   border: 1px solid rgba(18, 20, 23, 0.2);
 }
 
-.levelTagPrimary {
+.levelTag.active {
   border-radius: 35px;
   background: #f4c550;
 }

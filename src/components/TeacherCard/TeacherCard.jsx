@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import css from './TeacherCard.module.css';
 
-export default function TeacherCard({ teacher, onToggleFavorite, isFavorite }) {
+export default function TeacherCard({ teacher, onToggleFavorite, isFavorite, selectedLevel }) {
     const [expanded, setExpended] = useState(false);
 
     const {
         name,
         surname,
         languages,
-        levels,
         rating,
         reviews,
         price_per_hour,
@@ -106,11 +105,11 @@ export default function TeacherCard({ teacher, onToggleFavorite, isFavorite }) {
                             {expanded ? 'Hide details' : 'Read More'}
                         </button>
 
-                        <div className={css.levelsContainer}>
-                            {levels.map((level, index) => (
+                        <div className={css.levels}>
+                            {teacher.levels.map(level => (
                                 <span
-                                    key={index}
-                                    className={`${css.levelTag} ${index === 0 ? css.levelTagPrimary : ''}`}
+                                    key={level}
+                                    className={`${css.levelTag} ${level === selectedLevel ? css.active : ''}`}
                                 >
                                     {level}
                                 </span>

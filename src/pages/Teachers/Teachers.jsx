@@ -2,14 +2,24 @@ import { useCallback, useEffect, useState } from "react";
 import { ref, get } from 'firebase/database';
 import { database } from '../../services/firebase';
 import TeacherCard from '../../components/TeacherCard/TeacherCard';
-import css from './Teachers.module.css';
+import TeacherFilters from "../../components/TeacherFilters/TeacherFilters";
 import Header from "../../components/Header/Header";
+
+import css from './Teachers.module.css';
+
+
 
 export default function TeacherList() {
     const [teachers, setTeachers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [visibleCount, setVisibleCount] = useState(4);
     const [favorites, setFavorites] = useState([]);
+    const [filters, setFilters] = useState({});
+    const [filterOptions, setFilterOptions] = useState({
+        languages: [],
+        levels: [],
+        prices: [],
+    });
 
     useEffect(() => {
         const fetchTeachers = async () => {
@@ -20,6 +30,12 @@ export default function TeacherList() {
                     const data = snapshot.val();
                     const teachersArray = Object.values(data);
                     setTeachers(teachersArray);
+
+                    const languages = [...new Set(teachersArray.flatMap(t => t.languages))];
+                    const levels = [...new Set(teachersArray.flatMap(t => t.levels))];
+                    const prices = [...new Set(teachersArray.map(t => t.price_per_hour))].sort((a, b) => a - b);
+
+                    setFilterOptions({ languages, levels, prices });
                 } else {
                     console.log('No data available');
                 }
@@ -58,22 +74,35 @@ export default function TeacherList() {
         setFavorites(updatedList);
     }, []);
 
-    const isTeacherFavorite = (teacher) => {
-        return favorites.some(fav => fav.name === teacher.name && fav.surname === teacher.surname)
-    }
+    const isTeacherFavorite = (teacher) =>
+        favorites.some(fav => fav.name === teacher.name && fav.surname === teacher.surname);
 
-    if (loading) return <p>Loading...</p>;
+    const handleFilter = (values) => {
+        setFilters(values);
+    };
+
+    const filteredTeachers = teachers.filter(t => {
+        const matchLanguage = !filters.language || t.languages.includes(filters.language);
+        const matchLevel = !filters.level || t.levels.includes(filters.level);
+        const matchPrice = !filters.price || t.price_per_hour <= Number(filters.price);
+        return matchLanguage && matchLevel && matchPrice;
+    });
+
+    const visibleTeachers = filteredTeachers.slice(0, visibleCount);
 
     const handleLoadMore = () => {
         setVisibleCount(prev => prev + 4);
     };
 
-    const visibleTeachers = teachers.slice(0, visibleCount);
+    if (loading) return <p>Loading...</p>;
 
     return (
         <>
             <Header />
             <div className={css.container}>
+                <TeacherFilters options={filterOptions} onFilter={handleFilter} />
+
+
                 <div className={css.list}>
                     {visibleTeachers.map((teacher, index) => (
                         <TeacherCard
@@ -81,15 +110,19 @@ export default function TeacherList() {
                             teacher={teacher}
                             onToggleFavorite={handleToggleFavorite}
                             isFavorite={isTeacherFavorite(teacher)}
+                            selectedLevel={filters.level}
                         />
                     ))}
-
                 </div>
 
                 {visibleCount < teachers.length && (
                     <button onClick={handleLoadMore} className={css.loadMoreBtn}>
                         Load more
                     </button>
+                )}
+
+                {filteredTeachers.length === 0 && !loading && (
+                    <p>No teachers match your filters.</p>
                 )}
             </div>
         </>
