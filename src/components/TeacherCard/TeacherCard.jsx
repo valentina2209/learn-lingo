@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { toast } from 'react-toastify';
 import BookingFormModal from '../BookingFormModal/BookingFormModal';
+import { useTranslation } from 'react-i18next';
 import css from './TeacherCard.module.css';
 
 export default function TeacherCard({ teacher, onToggleFavorite, isFavorite, selectedLevel }) {
     const [expanded, setExpended] = useState(false);
     const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
     const { isLoggedIn } = useAuth();
+    const { t } = useTranslation();
 
     const {
         name,
@@ -25,7 +27,7 @@ export default function TeacherCard({ teacher, onToggleFavorite, isFavorite, sel
 
     const handleToggle = () => {
         if (!isLoggedIn) {
-            toast.info("This functionality is available only to authorized users.");
+            toast.info(t("auth.unauthorized_message"));
             return;
         }
 
@@ -50,20 +52,20 @@ export default function TeacherCard({ teacher, onToggleFavorite, isFavorite, sel
                 <div className={css.textContent}>
                     <div className={css.info}>
                         <div className={css.title_wrapper}>
-                            <p className={css.text}>Languages</p>
+                            <p className={css.text}>{t("teacher_card.languages")}</p>
                             <h3 className={css.title}>{name} {surname}</h3>
                         </div>
                         <div className={css.stats_bar}>
                             <div className={`${css.content} ${css.stat_item}`}>
                                 <svg className={css.icon}><use href="/icons.svg#icon-open-book" /></svg>
-                                <span className={css.book_text}>Lessons online</span>
+                                <span className={css.book_text}>{t("teacher_card.lessons_online")}</span>
                             </div>
-                            <p className={`${css.book_text} ${css.stat_item}`}>Lessons done: {lessons_done}</p>
+                            <p className={`${css.book_text} ${css.stat_item}`}>{t("teacher_card.lessons_done")}: {lessons_done}</p>
                             <div className={`${css.content} ${css.stat_item}`}>
                                 <svg className={css.icon}><use href="/icons.svg#icon-star" /></svg>
-                                <span className={css.book_text}>Rating: {rating} </span>
+                                <span className={css.book_text}>{t("teacher_card.rating")}: {rating} </span>
                             </div>
-                            <p className={`${css.book_text} ${css.stat_item}`}>Price: ${price_per_hour}/hour</p>
+                            <p className={`${css.book_text} ${css.stat_item}`}>{t("teacher_card.price_per_hour")}: ${price_per_hour} {t("teacher_card.hour")}</p>
                         </div>
                         <button
                             onClick={handleToggle}
@@ -77,13 +79,13 @@ export default function TeacherCard({ teacher, onToggleFavorite, isFavorite, sel
 
                     <div className={css.description}>
                         <p className={css.speaks_line}>
-                            <strong className={css.speaks_label}>Speaks:</strong>
+                            <strong className={css.speaks_label}>{t("teacher_card.speaks")}:</strong>
                             <span className={css.speaks_value}>
                                 {languages.join(', ')}
                             </span>
                         </p>
-                        <p className={css.text_info}><strong className={css.text}>Lesson Info:</strong> {lesson_info}</p>
-                        <p className={css.text_info}><strong className={css.text}>Conditions:</strong> {conditions}</p>
+                        <p className={css.text_info}><strong className={css.text}>{t("teacher_card.lesson_info")}:</strong> {lesson_info}</p>
+                        <p className={css.text_info}><strong className={css.text}>{t("teacher_card.conditions")}:</strong> {conditions}</p>
                         {expanded && (
                             <>
                                 <p className={css.textExperience}>{experience}</p>
@@ -112,7 +114,7 @@ export default function TeacherCard({ teacher, onToggleFavorite, isFavorite, sel
                             </>
                         )}
                         <button onClick={toggleExpand} className={css.readMore}>
-                            {expanded ? 'Hide details' : 'Read More'}
+                            {expanded ? t("teacher_card.hide_details") : t("teacher_card.read_more")}
                         </button>
 
                         <div className={css.levels}>
@@ -130,7 +132,7 @@ export default function TeacherCard({ teacher, onToggleFavorite, isFavorite, sel
                                 className={css.bookTrialButton}
                                 onClick={openBookingModal}
                             >
-                                Book trial lesson
+                                {t("teacher_card.book_trial_lesson")}
                             </button>
                         )}
 

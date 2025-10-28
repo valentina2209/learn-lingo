@@ -29,7 +29,8 @@ nav,
     padding: 0 36px;
   }
   .wrapper {
-    display: inline-flex;
+    display: flex;
+    justify-content: space-between;
     gap: 68px;
   }
   nav {
@@ -58,6 +59,8 @@ nav,
 
   .header__actions {
     display: flex;
+    align-items: center;
+    gap: 20px;
   }
   .btn_link {
     display: flex;
@@ -72,6 +75,8 @@ nav,
     line-height: 1.25;
     margin-right: 16px;
     cursor: pointer;
+
+    white-space: nowrap;
   }
   .icon {
     width: 20px;
@@ -120,7 +125,7 @@ nav,
     padding: 0 128px;
   }
   .wrapper {
-    gap: 268px;
+    gap: 206px;
     display: flex;
     justify-content: center;
   }

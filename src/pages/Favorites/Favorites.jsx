@@ -1,11 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import TeacherCard from "../../components/TeacherCard/TeacherCard";
 import Header from "../../components/Header/Header";
+import { useTranslation } from 'react-i18next';
 import style from "./Favorites.module.css";
+
 
 
 export default function FavoritesPage() {
     const [favorites, setFavorites] = useState([]);
+    const { t } = useTranslation();
 
     useEffect(() => {
         const saved = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -48,7 +51,7 @@ export default function FavoritesPage() {
                         ))}
                     </ul>
                 ) : (
-                    <p className={style.text}>No favorites teacher yet.</p>
+                    <p className={style.text}>{t("favorites.message")}</p>
                 )}
             </div>
         </>

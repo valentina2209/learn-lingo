@@ -1,5 +1,47 @@
 {
-  "welcome": "Welcome",
-  "teachers": "Teachers",
-  "favorites": "Favorites"
+  "header": {
+    "home": "Home",
+    "teachers": "Teachers",
+    "favorites": "Favorites",
+    "login": "Log In",
+    "registration": "Registration",
+    "hello": "Hello"
+  },
+  "auth": {
+    "unauthorized_message": "This feature is only available to authorized users."
+  },
+  "teacher_card": {
+    "languages": "Languages",
+    "read_more": "Read More",
+    "hide_details": "Hide details",
+    "lessons_online": "Lessons online",
+    "lessons_done": "Lessons done",
+    "rating": "Rating",
+    "price_per_hour": "Price",
+    "hour": "/hour",
+    "speaks": "Speaks",
+    "lesson_info": "Lesson Info",
+    "conditions": "Conditions",
+    "book_trial_lesson": "Book trial lesson"
+  },
+  "teacher": {
+    "load_more": "Load more",
+    "message": "No teachers match your filters."
+  },
+  "favorites": {
+    "message": "No favorites teacher yet"
+  },
+  "filters": {
+    "languages": "Languages",
+    "level": "Level of knowledge",
+    "price": "Price",
+    "apply": "Apply filters"
+  },
+  "home": {
+    "title": "Unlock your potential with the best",
+    "accent": "language",
+    "text": "tutors",
+    "subtext": "Embark on an Exciting Language Journey with Expert Language Tutors: Elevate your language proficiency to new heights by connecting with highly qualified and experienced tutors.",
+    "btn": " Get started"
+  }
 }

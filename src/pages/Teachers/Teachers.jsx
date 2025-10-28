@@ -5,12 +5,14 @@ import TeacherCard from '../../components/TeacherCard/TeacherCard';
 import TeacherFilters from "../../components/TeacherFilters/TeacherFilters";
 import Header from "../../components/Header/Header";
 import Loader from "../../components/Loader/Loader"
+import { useTranslation } from 'react-i18next';
 
 import css from './Teachers.module.css';
 
 
 
 export default function TeacherList() {
+    const { t } = useTranslation();
     const [teachers, setTeachers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [visibleCount, setVisibleCount] = useState(4);
@@ -118,12 +120,12 @@ export default function TeacherList() {
 
                 {visibleCount < teachers.length && (
                     <button onClick={handleLoadMore} className={css.loadMoreBtn}>
-                        Load more
+                        {t("teacher.load_more")}
                     </button>
                 )}
 
                 {filteredTeachers.length === 0 && !loading && (
-                    <p>No teachers match your filters.</p>
+                    <p>{t("teacher.message")}</p>
                 )}
             </div>
         </>

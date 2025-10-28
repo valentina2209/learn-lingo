@@ -1,20 +1,31 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import ua from "./locales/ua/translation.json";
-import en from "./locales/en/translation.json";
+import LanguageDetector from "i18next-browser-languagedetector";
+import uaTranslation from "./locales/ua/translation.json";
+import enTranslation from "./locales/en/translation.json";
 
-const savedLang = localStorage.getItem("lang") || "ua";
-
-i18n.use(initReactI18next).init({
-    resources: {
-        ua: { translation: ua },
-        en: { translation: en },
+const resources = {
+    en: {
+        translation: enTranslation
     },
-    lng: savedLang,
-    fallbackLng: "ua",
+    ua: {
+        translation: uaTranslation
+    }
+};
+
+i18n.use(LanguageDetector).use(initReactI18next).init({
+    resources,
+    fallbackLng: "en",
+    lng: "en",
+
+    detection: {
+        order: ["cookie", "localStorage", "navigator"],
+        caches: ["cookie"],
+    },
+
     interpolation: {
         escapeValue: false,
-    },
-});
+    }
+})
 
 export default i18n;

@@ -3,6 +3,7 @@ import { Formik, Form, useField } from "formik";
 import Select from "react-select";
 import css from "./TeacherFilters.module.css"
 import { customStyles } from "./selectStyles.js";
+import { t } from "i18next";
 
 const SelectField = ({ label, name, options, ...props }) => {
 
@@ -56,23 +57,23 @@ export default function TeacherFilters({ options, onFilter }) {
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form className={css.form}>
                 <SelectField
-                    label="Languages"
+                    label={t("filters.languages")}
                     name="language"
                     options={languages}
                 />
                 <SelectField
-                    label="Level of knowledge"
+                    label={t("filters.level")}
                     name="level"
                     options={levels}
                 />
                 <SelectField
-                    label="Price"
+                    label={t("filters.price")}
                     name="price"
                     options={prices}
                 />
 
                 <button type="submit" className={css.button}>
-                    Apply filters
+                    {t("filters.apply")}
                 </button>
             </Form>
         </Formik>

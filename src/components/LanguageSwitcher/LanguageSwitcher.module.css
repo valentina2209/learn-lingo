@@ -1,0 +1,41 @@
+/* src/components/LanguageSwitcher/LanguageSwitcher.module.css */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 40px; /* Відступ між кнопками та роздільником */
+}
+.langBtn {
+  /* Базові стилі, як у посиланнях хедера */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+
+  /* Стилі шрифту */
+  font-family: inherit; /* Використовуйте шрифт вашого проекту */
+  font-size: 16px;
+  font-weight: 500; /* Medium */
+  line-height: 1.25;
+  color: #121417; /* Основний колір тексту */
+  transition: color 0.2s;
+}
+
+/* Стилі для роздільника */
+.separator {
+  color: #8a8a89;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.langBtn:hover {
+  color: #fbe9ba;
+}
+
+/* Активний стан */
+.active {
+  font-weight: 500;
+  color: #f4c550;
+}

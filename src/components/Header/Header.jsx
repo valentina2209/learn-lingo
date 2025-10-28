@@ -4,9 +4,12 @@ import { useAuth } from "../../hooks/useAuth";
 import LoginForm from "../LoginForm/LoginForm";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import Logo from "../Logo/Logo";
+import { useTranslation } from "react-i18next";
 import css from "./Header.module.css";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 export default function Header() {
+    const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
     const [authModalOpen, setAuthModalOpen] = useState(false);
     const [authMode, setAuthMode] = useState("login");
@@ -31,34 +34,35 @@ export default function Header() {
                         to="/"
                         className={({ isActive }) => (isActive ? css.activeLink : css.link)}
                     >
-                        Home
+                        {t("header.home")}
                     </NavLink>
                     <NavLink
                         to="/teachers"
                         className={({ isActive }) => (isActive ? css.activeLink : css.link)}
                     >
-                        Teachers
+                        {t("header.teachers")}
                     </NavLink>
                     {isUserLoggedIn && (
                         <NavLink
                             to="/favorites"
                             className={({ isActive }) => (isActive ? css.activeLink : css.link)}
                         >
-                            Favorites
+                            {t("header.favorites")}
                         </NavLink>
                     )}
 
                 </nav>
 
                 <div className={css.header__actions}>
+                    <LanguageSwitcher />
                     {user ? (
                         <>
-                            <span className={css.userName}>Hello, {user.displayName || user.email}</span>
+                            <span className={css.userName}>{t("header.hello")}, {user.displayName || user.email}</span>
                             <button className={css.btn_link} onClick={logout}>
                                 <svg className={css.icon}>
                                     <use href="/icons.svg#icon-log-out"></use>
                                 </svg>
-                                Log out
+                                {t("header.logout")}
                             </button>
                         </>
                     ) : (
@@ -70,14 +74,15 @@ export default function Header() {
                                 <svg className={css.icon}>
                                     <use href="/icons.svg#icon-log-in"></use>
                                 </svg>
-                                Log in
+                                {t("header.login")}
                             </button>
 
                             <button
                                 className={css.btn}
                                 onClick={() => handleOpenAuth("register")}
                             >
-                                <span className={css.text}>Registration</span>
+                                <span className={css.text}>
+                                    {t("header.registration")}</span>
                             </button>
                         </>
                     )}
