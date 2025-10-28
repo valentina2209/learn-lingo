@@ -1,8 +1,7 @@
 import { NavLink } from "react-router-dom";
 import css from "./Logo.module.css";
 
-
-const Logo = () => {
+export default function Logo() {
     return (
         <NavLink className={css.wrap} to={"/"}>
             <svg className={css.icon}>
@@ -16,4 +15,3 @@ const Logo = () => {
     )
 }
 
-export default Logo

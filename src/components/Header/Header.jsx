@@ -4,15 +4,14 @@ import { useAuth } from "../../hooks/useAuth";
 import LoginForm from "../LoginForm/LoginForm";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import Logo from "../Logo/Logo";
-
 import css from "./Header.module.css";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [authModalOpen, setAuthModalOpen] = useState(false);
-    const [authMode, setAuthMode] = useState("login"); // "login" | "register"
-
+    const [authMode, setAuthMode] = useState("login");
     const { user, logout } = useAuth();
+    const isUserLoggedIn = !!user;
 
     const handleOpenAuth = (mode) => {
         setAuthMode(mode);
@@ -40,12 +39,15 @@ export default function Header() {
                     >
                         Teachers
                     </NavLink>
-                    <NavLink
-                        to="/favorites"
-                        className={({ isActive }) => (isActive ? css.activeLink : css.link)}
-                    >
-                        Favorites
-                    </NavLink>
+                    {isUserLoggedIn && (
+                        <NavLink
+                            to="/favorites"
+                            className={({ isActive }) => (isActive ? css.activeLink : css.link)}
+                        >
+                            Favorites
+                        </NavLink>
+                    )}
+
                 </nav>
 
                 <div className={css.header__actions}>

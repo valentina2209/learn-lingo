@@ -20,7 +20,6 @@ export default function BottomSection() {
                     <span className={css.numerical}>200 +</span>
                     <p className={css.text}>Tutor nationalities</p>
                 </div>
-
             </div>
         </section>
     );

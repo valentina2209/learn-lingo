@@ -1,8 +1,13 @@
 import { useState } from 'react';
+import { useAuth } from '../../hooks/useAuth';
+import { toast } from 'react-toastify';
+import BookingFormModal from '../BookingFormModal/BookingFormModal';
 import css from './TeacherCard.module.css';
 
 export default function TeacherCard({ teacher, onToggleFavorite, isFavorite, selectedLevel }) {
     const [expanded, setExpended] = useState(false);
+    const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+    const { isLoggedIn } = useAuth();
 
     const {
         name,
@@ -19,13 +24,18 @@ export default function TeacherCard({ teacher, onToggleFavorite, isFavorite, sel
     } = teacher;
 
     const handleToggle = () => {
+        if (!isLoggedIn) {
+            toast.info("This functionality is available only to authorized users.");
+            return;
+        }
+
         onToggleFavorite(teacher);
     }
 
     const toggleExpand = () => setExpended(prev => !prev);
 
-
-
+    const openBookingModal = () => setIsBookingModalOpen(true);
+    const closeBookingModal = () => setIsBookingModalOpen(false);
 
     const getInitials = (fullName) => {
 
@@ -116,8 +126,25 @@ export default function TeacherCard({ teacher, onToggleFavorite, isFavorite, sel
                             ))}
                         </div>
                         {expanded && (
-                            <button className={css.bookTrialButton}>Book trial lesson</button>
+                            <button
+                                className={css.bookTrialButton}
+                                onClick={openBookingModal}
+                            >
+                                Book trial lesson
+                            </button>
                         )}
+
+                        {isBookingModalOpen && (
+                            <BookingFormModal
+                                teacher={{
+                                    name: `${name} ${surname}`,
+                                    avatar: avatar_url,
+                                    languages: languages[0]
+                                }}
+                                onClose={closeBookingModal}
+                            />
+                        )}
+
                     </div>
                 </div>
 

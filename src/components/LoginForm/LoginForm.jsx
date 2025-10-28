@@ -6,9 +6,9 @@ import * as Yup from "yup";
 import { useAuth } from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import css from "./LoginForm.module.css";
-
 
 const modalRoot = document.getElementById("modal-root") || document.body;
 
@@ -23,9 +23,10 @@ const loginValidSchema = Yup.object().shape({
         .required("Password is required"),
 });
 
-export default function LoginForm({ onClose }) {
+export default function LoginForm({ onClose, onSwitchMode }) {
     const { loginUser } = useAuth();
     const [isPassShown, setIsPassShown] = useState(false);
+    const navigate = useNavigate();
 
     const {
         register,
@@ -55,9 +56,14 @@ export default function LoginForm({ onClose }) {
     const onSubmit = async (data) => {
         try {
             await loginUser(data.email, data.password);
-            reset();
-            onClose();
+
             toast.success("Login successful! Welcome back.");
+
+            navigate("/favorites");
+
+            onClose();
+
+            reset();
         } catch (error) {
             toast.error("Authentication failed: " + error.message);
         }
@@ -83,44 +89,68 @@ export default function LoginForm({ onClose }) {
                     </p>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
-                    <label className={css.label}>
-                        Email
-                        <input
-                            type="email"
-                            {...register("email")}
-                            className={css.input}
-                        />
-                        {errors.email && (
-                            <p className={css.error}>{errors.email.message}</p>
-                        )}
-                    </label>
-
-                    <label className={css.label}>
-                        Password
-                        <div className={css.passwordWrapper}>
+                <form onSubmit={handleSubmit(onSubmit)} className={css.form} autoComplete="off">
+                    <div className={css.fields}>
+                        <label className={css.label}>
                             <input
-                                type={isPassShown ? "text" : "password"}
-                                {...register("password")}
+                                type="email"
+                                {...register("email")}
+                                placeholder="Email"
+                                autoComplete="new-email"
                                 className={css.input}
                             />
-                            <button type="button" onClick={togglePassVisibility}>
-                                {isPassShown ? 'Hide' : 'Show'}
-                            </button>
-                        </div>
+                            {errors.email && (
+                                <p className={css.error}>{errors.email.message}</p>
+                            )}
+                        </label>
 
-                        {errors.password && (
-                            <p className={css.error}>{errors.password.message}</p>
-                        )}
-                    </label>
+                        <label className={css.label}>
+                            <div className={css.passwordWrapper}>
+                                <input
+                                    type={isPassShown ? "text" : "password"}
+                                    {...register("password")}
+                                    placeholder="Password"
+                                    autoComplete="new-password"
+                                    className={css.input}
+                                />
+                                <button className={css.passwordShow}
+                                    type="button"
+                                    onClick={togglePassVisibility}
+                                    aria-label={isPassShown ? "Hide password" : "Show password"}
+                                >
+                                    {isPassShown ? (
+                                        <svg className={css.iconPasswords}>
+                                            <use href="/icons.svg#icon-eye" />
+                                        </svg>
+                                    ) : (
+                                        <svg className={css.iconPassword}>
+                                            <use href="/icons.svg#icon-eye-off" />
+                                        </svg>
+                                    )}
+                                </button>
+                            </div>
+
+                            {errors.password && (
+                                <p className={css.error}>{errors.password.message}</p>
+                            )}
+                        </label>
+                    </div>
 
                     <button type="submit" className={css.submitBtn} disabled={isSubmitting}>
                         Log In
                     </button>
                 </form>
 
-
-
+                <p className={css.switchText}>
+                    Don't have an account?
+                    <button
+                        type="button"
+                        className={css.switchBtn}
+                        onClick={onSwitchMode}
+                    >
+                        Sign up
+                    </button>
+                </p>
 
             </div>
         </div>,

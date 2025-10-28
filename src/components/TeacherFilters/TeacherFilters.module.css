@@ -1,64 +1,43 @@
-/* --- Контейнер (Form) --- */
-/* ---------------------------------------------------- */
 .form {
-  /* Вирівнювання та відступи, як на макеті */
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Відстань між фільтрами */
-  align-items: flex-start; /* Вирівнюємо елементи по верхньому краю */
-  margin-bottom: 60px; /* Збільшуємо відступ до списку викладачів */
-
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 60px;
   width: auto;
 }
 
-/* ---------------------------------------------------- */
-/* --- Мітка (Label) --- */
-/* ---------------------------------------------------- */
 .label {
-  /* Базовий стиль мітки */
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Відстань між текстом мітки і select */
+  gap: 8px;
   width: 160px;
 }
 
-/* ---------------------------------------------------- */
-/* --- Текст Мітки (Languages, Level, Price per hour) --- */
-/* ---------------------------------------------------- */
 .labelText {
-  /* Стиль тексту мітки: сірий, менший шрифт */
   font-size: 14px;
   font-weight: 500;
-  color: #8a8a89; /* Сірий колір, схожий на макет */
+  color: #8a8a89;
 }
 
-/* ---------------------------------------------------- */
-/* --- Поле Вибору (Select) --- */
-/* ---------------------------------------------------- */
 .select {
-  /* Розміри та вигляд поля */
   width: 100%;
-  height: 48px; /* Фіксована висота, як на більшості UI */
-  padding: 0 18px; /* Внутрішній відступ */
+  height: 48px;
+  padding: 0 18px;
+  background-color: #fff;
+  border: 1px solid #f3f3f3;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
 
-  /* Дизайн поля */
-  background-color: #fff; /* Білий фон */
-  border: 1px solid #f3f3f3; /* Дуже світле обведення */
-  border-radius: 14px; /* Заокруглені кути */
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05); /* Легка тінь */
-
-  /* Текст всередині */
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
-  color: #121417; /* Темний текст */
+  color: #121417;
 
-  /* Приховуємо стандартну стрілку браузера для select */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 
-  /* Додаємо власну стрілку вниз */
   background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%207.5L10%2012.5L15%207.5%22%20stroke%3D%22%23121417%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E');
   background-repeat: no-repeat;
   background-position: right 15px center;
@@ -68,18 +47,12 @@
   transition: box-shadow 0.2s, border-color 0.2s;
 }
 
-/* Стиль при фокусі/активності */
 .select:focus {
-  outline: none; /* Прибираємо стандартну синю рамку */
-  /* ЗАЛИШАЄМО НЕЙТРАЛЬНИЙ ВИГЛЯД, щоб відповідати макету 29, де немає обведення */
+  outline: none;
   border-color: #f3f3f3;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
 }
 
-/* ---------------------------------------------------- */
-/* --- Стилізація опцій випадаючого вікна (option) --- */
-/* --- ЦІ СТИЛІ ІГНОРУЮТЬСЯ БРАУЗЕРОМ --- */
-/* ---------------------------------------------------- */
 .select option {
   font-size: 16px;
   padding: 10px;
@@ -87,27 +60,22 @@
   color: #121417;
 }
 
-/* Видаляємо всі спроби стилізувати hover/checked, оскільки вони не працюють */
 .select option:checked,
 .select option:hover {
   background-color: transparent;
   color: inherit;
 }
 
-/* ---------------------------------------------------- */
-/* --- Кнопка "Apply" --- */
-/* ---------------------------------------------------- */
 .button {
-  /* Кнопку вирівнюємо з полем select */
   align-self: flex-end;
 
   height: 48px;
   padding: 10px 30px;
 
-  background-color: #f4c550; /* Жовтий, як на макеті */
-  color: #121417; /* Чорний текст */
+  background-color: #f4c550;
+  color: #121417;
   border: none;
-  border-radius: 14px; /* Заокруглені кути, як у полів */
+  border-radius: 14px;
   cursor: pointer;
   font-weight: 700;
   font-size: 16px;
@@ -116,5 +84,5 @@
 }
 
 .button:hover {
-  background-color: #ffd86b; /* Світліший жовтий при наведенні */
+  background-color: #ffd86b;
 }

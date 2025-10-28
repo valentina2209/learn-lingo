@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -27,6 +27,7 @@ const registrationValidSchema = Yup.object().shape({
 
 export default function RegistrationForm({ onClose }) {
     const { registerUser } = useAuth();
+    const [isPassShown, setIsPassShown] = useState(false);
 
     const {
         register,
@@ -65,6 +66,10 @@ export default function RegistrationForm({ onClose }) {
         }
     };
 
+    const togglePassVisibility = () => {
+        setIsPassShown(!isPassShown);
+    }
+
     return createPortal(
         <div className={css.backdrop} onClick={handleBackdropClick}>
             <div className={css.modal}>
@@ -75,54 +80,73 @@ export default function RegistrationForm({ onClose }) {
                 <div className={css.wrapperTitle}>
                     <h2 className={css.title}>Registration</h2>
                     <p className={css.subTitle}>
-                        Please fill in the required fields to create your account.
+                        Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information
                     </p>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+                <form onSubmit={handleSubmit(onSubmit)} className={css.form} autoComplete="off">
+                    <div className={css.fields}>
+                        <label className={css.label}>
+                            <input
+                                type="text"
+                                {...register("name")}
+                                placeholder="Name"
+                                autoComplete="new-name"
+                                className={css.input}
+                            />
+                            {errors.name && (
+                                <p className={css.error}>{errors.name.message}</p>
+                            )}
+                        </label>
 
-                    <label className={css.label}>
-                        Name
-                        <input
-                            type="text"
-                            {...register("name")}
-                            className={css.input}
-                        />
-                        {errors.name && (
-                            <p className={css.error}>{errors.name.message}</p>
-                        )}
-                    </label>
+                        <label className={css.label}>
+                            <input
+                                type="email"
+                                {...register("email")}
+                                placeholder="Email"
+                                autoComplete="new-email"
+                                className={css.input}
+                            />
+                            {errors.email && (
+                                <p className={css.error}>{errors.email.message}</p>
+                            )}
+                        </label>
 
-                    <label className={css.label}>
-                        Email
-                        <input
-                            type="email"
-                            {...register("email")}
-                            className={css.input}
-                        />
-                        {errors.email && (
-                            <p className={css.error}>{errors.email.message}</p>
-                        )}
-                    </label>
+                        <label className={css.label}>
+                            <div className={css.passwordWrapper}>
+                                <input
+                                    type={isPassShown ? "text" : "password"}
+                                    {...register("password")}
+                                    placeholder="Password"
+                                    autoComplete="new-password"
+                                    className={css.input}
+                                />
+                                <button className={css.passwordShow}
+                                    type="button"
+                                    onClick={togglePassVisibility}
+                                    aria-label={isPassShown ? "Hide password" : "Show password"}
+                                >
+                                    {isPassShown ? (
+                                        <svg className={css.iconPasswords}>
+                                            <use href="/icons.svg#icon-eye" />
+                                        </svg>
+                                    ) : (
+                                        <svg className={css.iconPassword}>
+                                            <use href="/icons.svg#icon-eye-off" />
+                                        </svg>
+                                    )}
+                                </button>
+                            </div>
 
-                    <label className={css.label}>
-                        Password
-                        <input
-                            type="password"
-                            {...register("password")}
-                            className={css.input}
-                        />
-                        {errors.password && (
-                            <p className={css.error}>{errors.password.message}</p>
-                        )}
-                    </label>
-
+                            {errors.password && (
+                                <p className={css.error}>{errors.password.message}</p>
+                            )}
+                        </label>
+                    </div>
                     <button type="submit" className={css.submitBtn} disabled={isSubmitting}>
                         Sign Up
                     </button>
                 </form>
-
-
             </div>
         </div>,
         modalRoot

@@ -4,6 +4,7 @@ import { database } from '../../services/firebase';
 import TeacherCard from '../../components/TeacherCard/TeacherCard';
 import TeacherFilters from "../../components/TeacherFilters/TeacherFilters";
 import Header from "../../components/Header/Header";
+import Loader from "../../components/Loader/Loader"
 
 import css from './Teachers.module.css';
 
@@ -94,7 +95,7 @@ export default function TeacherList() {
         setVisibleCount(prev => prev + 4);
     };
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Loader />;
 
     return (
         <>
