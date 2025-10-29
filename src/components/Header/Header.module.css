@@ -1,31 +1,141 @@
 .container {
-  margin-top: 20px;
+  max-width: 320px;
   padding: 0 16px;
-  margin-bottom: 20px;
+  margin: 20px auto;
 }
 nav,
 .btn_link,
 .btn {
   display: none;
 }
+
 .wrapper {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   gap: 28px;
 }
+
+.header__actions {
+  display: flex;
+}
+
 .burger {
   background: white;
   border: none;
 }
+
 .icon {
-  width: 32px;
-  height: 32px;
-  display: block;
+  width: 20px;
+  height: 20px;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 67px;
+  right: 0;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  z-index: 99;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
+  transform-origin: top;
+  animation: fadeInDown 0.3s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.mobileLink {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #121417;
+  text-decoration: none;
+  padding: 10px 0;
+  transition: color 0.2s;
+}
+
+.mobileLink:hover,
+.mobileLink.activeLink {
+  color: #f4c550;
+}
+
+.mobileAuth {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.mobileBtn,
+.mobileBtnLink,
+.mobileBtnLogout {
+  width: 100%;
+  padding: 14px 20px;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.mobileBtn {
+  background: #f4c550;
+  color: #121417;
+}
+.mobileBtn:hover {
+  background-color: #ffdc86;
+}
+.mobileBtnLink {
+  background: #fff;
+  color: #121417;
+  border-color: #121417;
+}
+.mobileBtnLink:hover {
+  background-color: #f8f8f8;
+}
+
+.mobileBtnLogout {
+  background: #121417;
+  color: #fff;
+}
+.mobileBtnLogout:hover {
+  background-color: #333;
 }
 
 @media only screen and (min-width: 768px) {
   .container {
+    max-width: 768px;
     padding: 0 36px;
   }
   .wrapper {
@@ -118,10 +228,15 @@ nav,
   .burger {
     display: none;
   }
+
+  .mobileMenu {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
   .container {
+    max-width: 1440px;
     padding: 0 128px;
   }
   .wrapper {

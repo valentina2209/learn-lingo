@@ -4,8 +4,10 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from 'react-toastify';
 import bookingValidationSchema from "./bookingValidationSchema";
+import { useTranslation } from "react-i18next";
 
 import css from "./BookingFormModal.module.css";
+
 
 const modalRoot = document.getElementById("modal-root") || document.body;
 
@@ -18,6 +20,8 @@ const reasons = [
 ];
 
 export default function BookingFormModal({ teacher, onClose }) {
+    const { t } = useTranslation();
+
     const defaultValues = {
         reason: "",
         fullName: "",
@@ -72,22 +76,22 @@ export default function BookingFormModal({ teacher, onClose }) {
                 </button>
 
                 <div>
-                    <h2 className={css.title}>Book trial lesson</h2>
+                    <h2 className={css.title}>{t("book.title")}</h2>
                     <p className={css.subTitle}>
-                        Our experienced tutor will assess your current language level, discuss your learning goals, and tailor the lesson to your specific needs.
+                        {t("book.text")}
                     </p>
                 </div>
 
                 <div className={css.teacherInfo}>
                     <img src={teacher.avatar} alt={teacher.name} className={css.avatar} />
                     <div className={css.titleWrapper}>
-                        <p className={css.infoText}>Your teacher</p>
+                        <p className={css.infoText}>{t("book.teach")}</p>
                         <p className={css.teacherName}>{teacher.name}</p>
                     </div>
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
-                    <h3 className={css.formTitle}>What is your main reason for learning {teacher.languages}?</h3>
+                    <h3 className={css.formTitle}>{t("book.form_title")} {teacher.languages}?</h3>
 
                     {errors.reason && (
                         <p className={css.error}>{errors.reason.message}</p>
@@ -146,7 +150,7 @@ export default function BookingFormModal({ teacher, onClose }) {
                     />
 
                     <button type="submit" className={css.submitBtn} disabled={isSubmitting}>
-                        Book
+                        {t("book.sub")}
                     </button>
                 </form>
             </div>

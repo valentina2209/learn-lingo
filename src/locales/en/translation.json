@@ -43,5 +43,23 @@
     "text": "tutors",
     "subtext": "Embark on an Exciting Language Journey with Expert Language Tutors: Elevate your language proficiency to new heights by connecting with highly qualified and experienced tutors.",
     "btn": " Get started"
+  },
+  "login": {
+    "log_in": "Log In",
+    "text": " Welcome back! Please enter your credentials to access your account and continue your search for an teacher.",
+    "switch_text": "Don't have an account?",
+    "sign_up": "Sign up"
+  },
+  "registr": {
+    "reg": "Registration",
+    "text": "Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information",
+    "sign_up": "Sign up"
+  },
+  "book": {
+    "title": "Book trial lesson",
+    "text": "Our experienced tutor will assess your current language level, discuss your learning goals, and tailor the lesson to your specific needs.",
+    "teach": "Your teacher",
+    "form_title": "What is your main reason for learning",
+    "sub": "Book"
   }
 }

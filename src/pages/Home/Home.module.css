@@ -1,13 +1,13 @@
 .container {
-  padding: 0 64px;
-  margin-bottom: 24px;
-  display: flex;
-  justify-content: center;
+  max-width: 320px;
+  padding: 0 16px;
+  margin: 0 auto;
 }
 
 .hero {
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
+  flex-wrap: wrap;
   gap: 24px;
 }
 
@@ -15,13 +15,10 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-
-  width: 568px;
+  width: 100%;
   flex-basis: 50%;
   flex-grow: 1;
-
-  padding: 98px 17px 98px 30px;
-
+  padding: 20px 17px;
   flex-shrink: 0;
   border-radius: 30px;
   background: #f8f8f8;
@@ -30,71 +27,51 @@
 .hero__title {
   color: #121417;
   font-family: Roboto;
-  font-size: 48px;
-  font-style: normal;
+  font-size: 24px;
   font-weight: 500;
-  line-height: 56px; /* 116.667% */
+  line-height: 30px;
   letter-spacing: -0.96px;
-  width: 567px;
-  max-width: 100%;
-  margin-bottom: 32px;
+  margin-bottom: 15px;
 }
 
 .hero__accent {
   color: #121417;
   font-family: Roboto;
-  font-size: 48px;
+  font-size: 24px;
   font-style: italic;
   font-weight: 400;
-  line-height: 56px;
+  line-height: 30px;
   letter-spacing: -0.96px;
   background-color: #fbe9ba;
 }
 
 .hero__text {
   width: 467px;
-
   max-width: 90%;
-  margin-bottom: 64px;
+  margin-bottom: 25px;
   color: #121417;
   font-family: var(--font-family);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 22px; /* 137.5% */
+  line-height: 22px;
   letter-spacing: -0.32px;
-}
-
-.hero__image {
-  display: flex;
-  flex-grow: 1;
-  min-width: 568px;
-  border-radius: 30px;
-}
-
-.hero__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 30px;
 }
 
 .hero__button {
   display: inline-flex;
-  padding: 16px 88px;
+  padding: 10px 20px;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
   background: #f4c550;
   border: none;
   margin-bottom: auto;
-
   color: #121417;
   font-family: Roboto;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
-  line-height: 28px;
 }
 
 .hero__button:hover,
@@ -108,5 +85,120 @@
   transform: translateY(0);
 }
 
-@media (max-width: 1199px) {
+.hero__image {
+  display: flex;
+  flex-grow: 1;
+  border-radius: 30px;
+}
+
+.hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .hero__content {
+    align-items: flex-start;
+    flex-direction: column;
+    width: 568px;
+    padding: 98px 17px 98px 30px;
+  }
+
+  .hero__title {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.96px;
+    width: 567px;
+    max-width: 100%;
+    margin-bottom: 32px;
+  }
+
+  .hero__accent {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  .hero__text {
+    width: 467px;
+
+    max-width: 90%;
+    margin-bottom: 64px;
+    color: #121417;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 137.5% */
+    letter-spacing: -0.32px;
+  }
+
+  .hero__image {
+    display: flex;
+    flex-grow: 1;
+    min-width: 568px;
+    border-radius: 30px;
+  }
+
+  .hero__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+
+  .hero__button {
+    display: inline-flex;
+    padding: 16px 88px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: #f4c550;
+    border: none;
+    margin-bottom: auto;
+
+    color: #121417;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+  }
+
+  .hero__button:hover,
+  .hero__button:focus {
+    background-color: #ffdc86;
+    transform: translateY(-2px);
+  }
+  .hero__button:active {
+    background-color: #222;
+    color: #fff;
+    transform: translateY(0);
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 64px;
+    margin: 0 auto 24px;
+  }
 }

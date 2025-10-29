@@ -7,6 +7,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 import css from "./LoginForm.module.css";
 
@@ -27,6 +28,7 @@ export default function LoginForm({ onClose, onSwitchMode }) {
     const { loginUser } = useAuth();
     const [isPassShown, setIsPassShown] = useState(false);
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const {
         register,
@@ -82,10 +84,10 @@ export default function LoginForm({ onClose, onSwitchMode }) {
 
                 <div className={css.wrapperTitle}>
                     <h2 className={css.title}>
-                        Log In
+                        {t("login.log_in")}
                     </h2>
                     <p className={css.subTitle}>
-                        Welcome back! Please enter your credentials to access your account and continue your search for an teacher.
+                        {t("login.text")}
                     </p>
                 </div>
 
@@ -137,20 +139,24 @@ export default function LoginForm({ onClose, onSwitchMode }) {
                     </div>
 
                     <button type="submit" className={css.submitBtn} disabled={isSubmitting}>
-                        Log In
+                        {t("login.log_in")}
                     </button>
+
+                    <p className={css.switchText}>
+                        {t("login.switch_text")}
+                        <button
+                            type="button"
+                            className={css.switchBtn}
+                            onClick={onSwitchMode}
+                        >
+                            {t("login.sign_up")}
+                        </button>
+                    </p>
+
+
                 </form>
 
-                <p className={css.switchText}>
-                    Don't have an account?
-                    <button
-                        type="button"
-                        className={css.switchBtn}
-                        onClick={onSwitchMode}
-                    >
-                        Sign up
-                    </button>
-                </p>
+
 
             </div>
         </div>,

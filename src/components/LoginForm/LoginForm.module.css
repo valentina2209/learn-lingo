@@ -17,7 +17,7 @@
   position: relative;
   animation: slideUp 0.4s ease forwards;
   height: 506px;
-  padding: 64px;
+  padding: 50px;
   background-color: #fff;
 }
 
@@ -171,6 +171,10 @@ input::placeholder {
   letter-spacing: normal;
   text-align: left;
   color: #121417;
+}
+
+.submitBtn:hover {
+  background-color: #ffdc86;
 }
 
 .switchText {

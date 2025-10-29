@@ -6,12 +6,12 @@
 }
 .bottom {
   display: flex;
-  width: 1312px;
+  width: 1168px;
   height: 116px;
   flex-shrink: 0;
   border-radius: 30px;
   border: 1.5px dashed #f4c550;
-  padding: 0 123px;
+  padding: 0 79px;
 }
 .wrapper {
   display: flex;

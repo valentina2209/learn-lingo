@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { useAuth } from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useTranslation } from 'react-i18next';
 
 import css from "./RegistrationForm.module.css";
 
@@ -28,6 +29,7 @@ const registrationValidSchema = Yup.object().shape({
 export default function RegistrationForm({ onClose }) {
     const { registerUser } = useAuth();
     const [isPassShown, setIsPassShown] = useState(false);
+    const { t } = useTranslation();
 
     const {
         register,
@@ -78,9 +80,9 @@ export default function RegistrationForm({ onClose }) {
                 </button>
 
                 <div className={css.wrapperTitle}>
-                    <h2 className={css.title}>Registration</h2>
+                    <h2 className={css.title}>{t("registr.reg")}</h2>
                     <p className={css.subTitle}>
-                        Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information
+                        {t("registr.text")}
                     </p>
                 </div>
 
@@ -144,7 +146,7 @@ export default function RegistrationForm({ onClose }) {
                         </label>
                     </div>
                     <button type="submit" className={css.submitBtn} disabled={isSubmitting}>
-                        Sign Up
+                        {t("registr.sign_up")}
                     </button>
                 </form>
             </div>
