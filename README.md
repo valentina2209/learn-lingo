@@ -108,7 +108,7 @@ To get a copy of the project up and running on your local machine, follow these 
 
 ## 🔗 Live Demo & Materials
 
-- **Live Demo:** [https://learn-lingo-lac.vercel.app/]
-- **Design/Mockup:** [https://www.figma.com/file/dewf5jVviSTuWMMyU3d8Mc/%D0%9F%D0%B5%D1%82-%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82-%D0%B4%D0%BB%D1%8F-%D0%9A%D0%A6?type=design&node-id=0-1&mode=design&t=jCmjSs9PeOjObYSc-0]
+- **Live Demo:** https://learn-lingo-lac.vercel.app/
+- **Design/Mockup:** https://www.figma.com/file/dewf5jVviSTuWMMyU3d8Mc/%D0%9F%D0%B5%D1%82-%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82-%D0%B4%D0%BB%D1%8F-%D0%9A%D0%A6?type=design&node-id=0-1&mode=design&t=jCmjSs9PeOjObYSc-0
 - **Tutor Data Source:** `teachers.json` (used to populate the Firebase Realtime Database).
 - **Firebase Documentation:** Utilized the official documentation for REST API integration.
