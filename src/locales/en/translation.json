@@ -5,7 +5,8 @@
     "favorites": "Favorites",
     "login": "Log In",
     "registration": "Registration",
-    "hello": "Hello"
+    "hello": "Hello",
+    "logout": "Log out"
   },
   "auth": {
     "unauthorized_message": "This feature is only available to authorized users."
