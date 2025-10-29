@@ -17,7 +17,7 @@
 
 The project is built using modern web technologies:
 
-| Category         | Technology Purpose                                         |
+| Category         | Technology                                                 | Purpose  
 | :--------------- | :--------------------------------------------------------- | :---------------------------------------------------------------------------- |
 | **Frontend**     | **React**                                                  | Primary library for building the UI.                                          |
 | **Build Tool**   | **Vite**                                                   | Fast development and bundling.                                                |
