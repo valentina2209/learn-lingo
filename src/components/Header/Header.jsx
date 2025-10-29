@@ -120,7 +120,7 @@ export default function Header() {
                         ref={burgerRef}
                     >
                         <svg className={css.icon}>
-                            <use href={isOpen ? "/icons.svg#icon-criss-cross" : "/public/menu.svg"}></use>
+                            <use href={isOpen ? "/icons.svg#icon-criss-cross" : "/menu.svg"}></use>
                         </svg>
                     </button>
                 </div>
